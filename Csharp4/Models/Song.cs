@@ -4,6 +4,9 @@ namespace Csharp4.Models
 {
     internal class Song
     {
+
+        private readonly string[] notes = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+
         [JsonPropertyName("artist")]
         public string? Artist { get; set; }
 
@@ -15,6 +18,20 @@ namespace Csharp4.Models
 
         [JsonPropertyName("genre")]
         public string? Genre { get; set; }
+
+        [JsonPropertyName("year")]
+        public string? Year { get; set; }
+
+        [JsonPropertyName("key")]
+        public int Key { get; set; }
+
+        public string Note
+        {
+            get 
+            {
+                return notes[Key];
+            }
+        }
      
         public void ShowSongDetails()
         {
@@ -22,7 +39,10 @@ namespace Csharp4.Models
             Console.WriteLine($"Name: {Name}");
             Console.WriteLine($"Duration: {Duration/1000}");
             Console.WriteLine($"Genre: {Genre}");
-
+            Console.WriteLine($"Year: {Year}");
+            Console.WriteLine($"Key: {Note}");
         }
+
+        
     }
 }
